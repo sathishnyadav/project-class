@@ -1,0 +1,11 @@
+.MerchantLogin{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+}
+.MerchantLogin Form{
+    box-shadow: 0px 0px 10px black;
+    border-radius: 20px;
+    padding: 20px 50px;
+}
