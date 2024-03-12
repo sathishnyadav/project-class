@@ -11,4 +11,6 @@ public interface MerchantRepository extends JpaRepository<Merchant, Integer> {
 	public Optional<Merchant> verifyMerchant(long phone, String password);
 
 	public Optional<Merchant> findByEmailAndPassword(String email, String password);
+
+	public Optional<Merchant> findByToken(String token);
 }

@@ -27,4 +27,8 @@ public class MerchantDao {
 	public Optional<Merchant> findById(int id) {
 		return merchantRepository.findById(id);
 	}
+
+	public Optional<Merchant> findByToken(String token) {
+		return merchantRepository.findByToken(token);
+	}
 }
