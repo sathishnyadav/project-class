@@ -22,6 +22,18 @@ public class ProductService {
 	@Autowired
 	private MerchantDao merchantDao;
 
+	public ResponseEntity<ResponseStructure<Product>> findById(int id) {
+		ResponseStructure<Product> structure = new ResponseStructure<>();
+		Optional<Product> recProduct = productDao.findById(id);
+		if (recProduct.isEmpty()) {
+			throw new ProductNotFoundException("Invalid Product Id");
+		}
+		structure.setBody(recProduct.get());
+		structure.setMessage("Product Found");
+		structure.setStatusCode(HttpStatus.OK.value());
+		return new ResponseEntity<ResponseStructure<Product>>(structure, HttpStatus.OK);
+	}
+
 	public ResponseEntity<ResponseStructure<Product>> saveProduct(Product product, int merchant_id) {
 		Optional<Merchant> recMechant = merchantDao.findById(merchant_id);
 		ResponseStructure<Product> structure = new ResponseStructure<>();
@@ -37,12 +49,65 @@ public class ProductService {
 		throw new MerchantNotFoundException("cannot add Product as Merchant Id is Invalid");
 	}
 
+	public ResponseEntity<ResponseStructure<Product>> updateProduct(Product product) {
+		ResponseStructure<Product> structure = new ResponseStructure<>();
+		Optional<Product> recProduct = productDao.findById(product.getId());
+		if (recProduct.isEmpty()) {
+			throw new ProductNotFoundException("cannot update product as Id is Invalid");
+		}
+		Product dbProduct = recProduct.get();
+		dbProduct.setBrand(product.getBrand());
+		dbProduct.setCategory(product.getCategory());
+		dbProduct.setDescription(product.getDescription());
+		dbProduct.setCost(product.getCost());
+		dbProduct.setImage_url(product.getImage_url());
+		dbProduct.setName(product.getName());
+		structure.setBody(productDao.saveProduct(dbProduct));
+		structure.setMessage("Product Updated");
+		structure.setStatusCode(HttpStatus.ACCEPTED.value());
+		return new ResponseEntity<ResponseStructure<Product>>(structure, HttpStatus.ACCEPTED);
+
+	}
+
 	public ResponseEntity<ResponseStructure<List<Product>>> findProductsByMerchantId(int merchant_id) {
 		ResponseStructure<List<Product>> structure = new ResponseStructure<>();
 		List<Product> products = productDao.findByMerchantId(merchant_id);
 		if (products.isEmpty()) {
 			throw new ProductNotFoundException("No Products Found for entered Merchant Id");
 		}
+		structure.setBody(products);
+		structure.setMessage("List of Products for Merchant Id");
+		structure.setStatusCode(HttpStatus.OK.value());
+		return new ResponseEntity<ResponseStructure<List<Product>>>(structure, HttpStatus.OK);
+	}
+
+	public ResponseEntity<ResponseStructure<List<Product>>> findByBrand(String brand) {
+		ResponseStructure<List<Product>> structure = new ResponseStructure<>();
+		List<Product> products = productDao.findByBrand(brand);
+		if (products.isEmpty()) {
+			throw new ProductNotFoundException("No Products Found for entered brand");
+		}
+		structure.setBody(products);
+		structure.setMessage("List of Products for the entered brand");
+		structure.setStatusCode(HttpStatus.OK.value());
+		return new ResponseEntity<ResponseStructure<List<Product>>>(structure, HttpStatus.OK);
+	}
+
+	public ResponseEntity<ResponseStructure<List<Product>>> findByCategory(String category) {
+		ResponseStructure<List<Product>> structure = new ResponseStructure<>();
+		List<Product> products = productDao.findByCategory(category);
+		if (products.isEmpty()) {
+			throw new ProductNotFoundException("No Products Found for entered Category");
+		}
+		structure.setBody(products);
+		structure.setMessage("List of Products for entered Category");
+		structure.setStatusCode(HttpStatus.OK.value());
+		return new ResponseEntity<ResponseStructure<List<Product>>>(structure, HttpStatus.OK);
+	}
+
+	public ResponseEntity<ResponseStructure<List<Product>>> findAll() {
+		ResponseStructure<List<Product>> structure = new ResponseStructure<>();
+		List<Product> products = productDao.findAll();
 		structure.setBody(products);
 		structure.setMessage("List of Products for Merchant Id");
 		structure.setStatusCode(HttpStatus.OK.value());
