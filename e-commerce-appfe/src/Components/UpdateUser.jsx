@@ -1,20 +1,30 @@
-import React, { useEffect } from 'react'
-import { useState } from 'react'
-import '../styles/UpdateMerchant.css'
- function UpdateMerchant() {
+import { useState,useEffect } from 'react'
+import axios from 'axios'
+ function UpdateUser() {
   let [name,setname] = useState("")
   let [email,setemail] = useState("")
   let [gst_number,setgst] = useState("")
   let [phone,setphone] = useState("")
   let [password,setpassword] = useState("")
-  
+
   let data = {name,email,gst_number,phone,password}
 
-
+  let editMerchant = (e) =>{
+    e.preventDefault();
+    axios.post('http://localhost:8080/merchants',data)
+    .then((res)=>{
+        console.log(res);
+        alert("Data Added succesfull")
+    })
+    .catch((err)=>{
+        console.log(err);
+        alert("Data Not Found")
+    })
+}
 
   return (
     <div className='merchantedit'>
-      <form  action="">
+      <form onSubmit={editMerchant} action="">
                 <label htmlFor="">Name</label>
                 <input required value={name} onChange={(e)=>{setname(e.target.value)}} type="text" placeholder="Enter the Name"  />
                 <label htmlFor="">GST_number</label>
@@ -31,4 +41,4 @@ import '../styles/UpdateMerchant.css'
   )
 }
 
-export default UpdateMerchant
+export default UpdateUser
