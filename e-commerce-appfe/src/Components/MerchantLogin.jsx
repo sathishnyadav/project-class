@@ -9,6 +9,7 @@ const MerchantLogin = () => {
 
     let navigate = useNavigate()
     
+
     function verifyMerchant (e) {
         e.preventDefault();
         axios.post(`http://localhost:8080/merchants/verify-by-email?email=${email}&password=${password}`)

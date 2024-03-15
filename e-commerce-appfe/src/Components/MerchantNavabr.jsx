@@ -10,6 +10,7 @@ function MerchantNavabr() {
             <h1><span>Shoppers</span>Cart</h1>
         </div>
         <div className="option">
+          
             <Link to="/merchanthomepage/productview">View Products</Link>
         </div>
 
