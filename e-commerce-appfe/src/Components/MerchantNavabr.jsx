@@ -11,6 +11,7 @@ function MerchantNavabr() {
         </div>
         <div className="option">
             <Link to="/merchanthomepage/productview">View Products</Link>
+            <Link to="/merchanthomepage/addproduts">Add Products</Link>
         </div>
 
 

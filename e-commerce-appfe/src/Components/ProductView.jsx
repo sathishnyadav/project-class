@@ -1,8 +1,29 @@
-import React from 'react'
-
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
  function ProductView() {
+  let [item,setitem] = useState([])
+  let admin = JSON.parse(localStorage.getItem("Merchant"))
+
+  useEffect(()=>{
+    axios.get(`http://localhost:8080/products/${admin.id}`)
+    .then((res)=>{
+        console.log(res);
+        setitem(res.data)
+    })
+    .catch((err)=>{
+        console.log(err);
+    })
+  },[])
   return (
-    <div>ProductView</div>
+    <div>
+      {item.map((x)=>{
+        return(
+          <>
+            <h1>x.name</h1>
+          </>
+        )
+      })}
+    </div>
   )
 }
 export default  ProductView

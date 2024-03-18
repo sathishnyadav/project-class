@@ -58,4 +58,9 @@ public class ProductController {
 	public ResponseEntity<ResponseStructure<Product>> updateProduct(@PathVariable int id) {
 		return productService.findById(id);
 	}
+
+	@GetMapping("/find-by-name/{name}")
+	public ResponseEntity<ResponseStructure<List<Product>>> findByName(@PathVariable String name) {
+		return productService.findByName(name);
+	}
 }
