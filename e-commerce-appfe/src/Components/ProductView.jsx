@@ -7,8 +7,8 @@ import axios from 'axios'
   useEffect(()=>{
     axios.get(`http://localhost:8080/products/${admin.id}`)
     .then((res)=>{
-        console.log(res);
-        setitem(res.data)
+        console.log(res.data.body);
+        setitem(res.data.body)
     })
     .catch((err)=>{
         console.log(err);
@@ -19,7 +19,7 @@ import axios from 'axios'
       {item.map((x)=>{
         return(
           <>
-            <h1>x.name</h1>
+            <h1>{x.name}</h1>
           </>
         )
       })}
