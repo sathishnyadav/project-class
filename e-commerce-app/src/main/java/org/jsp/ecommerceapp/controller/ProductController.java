@@ -30,7 +30,7 @@ public class ProductController {
 	}
 
 	@GetMapping("/{merchant_id}")
-	public ResponseEntity<ResponseStructure<List<Product>>> findByMerchantId(int merchant_id) {
+	public ResponseEntity<ResponseStructure<List<Product>>> findByMerchantId(@PathVariable int merchant_id) {
 		return productService.findProductsByMerchantId(merchant_id);
 	}
 
@@ -55,8 +55,8 @@ public class ProductController {
 	}
 
 	@PutMapping
-	public ResponseEntity<ResponseStructure<Product>> updateProduct(@PathVariable int id) {
-		return productService.findById(id);
+	public ResponseEntity<ResponseStructure<Product>> updateProduct(@RequestBody Product product) {
+		return productService.updateProduct(product);
 	}
 
 	@GetMapping("/find-by-name/{name}")
