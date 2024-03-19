@@ -1,0 +1,41 @@
+.productview{
+    height: 400px;
+    width: 280px;
+}
+.productview img{
+    height: 220px;
+    width: 180px;
+    transition: 2s;
+}
+#name{
+  height: 60px;  
+}
+.disp{
+   display: grid;
+   grid-template-columns: 320px 320px 320px;
+   grid-template-rows: 500px 500px;
+   justify-content: space-around;
+   
+}
+#desc{
+    height: 50px;
+    display: block;
+    overflow: hidden;
+}
+#cost{
+    font-size: larger;
+    font-weight: bold;
+    font-family: cursive;
+
+}
+#category{
+    position: relative;
+    color: white;
+    padding: 0px 10px;
+    border-radius: 10px;
+    top: -90px;
+    background-color: mediumblue;
+}
+.productview img:hover{
+    transform: rotateY(180deg);
+}

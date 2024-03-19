@@ -30,7 +30,7 @@ public class AddressController {
 	}
 
 	@GetMapping("/{user_id}")
-	public ResponseEntity<ResponseStructure<List<Address>>> findByMerchantId(@PathVariable int user_id) {
+	public ResponseEntity<ResponseStructure<List<Address>>> findByUserId(@PathVariable int user_id) {
 		return addressService.findAddresssByUserId(user_id);
 	}
 
