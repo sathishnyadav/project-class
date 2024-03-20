@@ -16,6 +16,7 @@ function ProductView() {
         console.log(err);
       })
   }, [])
+  
   let searchBybrand = (brand) => {
     axios.get(`http://localhost:8080/products/find-by-brand/${brand}`)
       .then((res) => {
@@ -28,7 +29,14 @@ function ProductView() {
   }
 
   let searchByCategory = (category) => {
-    console.log(category);
+    axios.get(`http://localhost:8080/products/find-by-category/${category}`)
+    .then((res) => {
+      console.log(res.data.body);
+      setitem(res.data.body)
+    })
+    .catch((err) => {
+      console.log(err);
+    })
   }
   return (
 
