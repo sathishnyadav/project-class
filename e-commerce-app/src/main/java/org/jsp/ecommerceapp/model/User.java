@@ -31,6 +31,7 @@ public class User {
 	@Column(nullable = false)
 	private String password;
 	private String status;
+	private String token;
 	@OneToMany(mappedBy = "user")
 	private List<Address> addresses;
 	@JoinTable(name = "user_cart", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {

@@ -16,6 +16,10 @@ public class UserDao {
 		return userRepository.save(user);
 	}
 
+	public Optional<User> findByToken(String token) {
+		return userRepository.findByToken(token);
+	}
+
 	public Optional<User> verifyUser(long phone, String password) {
 		return userRepository.findByPhoneAndPassword(phone, password);
 	}
