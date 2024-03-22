@@ -39,3 +39,7 @@
 .productview img:hover{
     transform: rotateY(180deg);
 }
+.icons{
+    display: flex;
+    justify-content: space-between;
+}
