@@ -10,7 +10,7 @@ const UserLogin = () => {
     
     function verifyMerchant (e) {
         e.preventDefault();
-        axios.post(`http://localhost:8080/merchants/verify-by-email?email=${email}&password=${password}`)
+        axios.post(`http://localhost:8080/users/verify-by-email?email=${email}&password=${password}`)
         .then((res)=>{
             console.log(res.data.body);
             localStorage.setItem("User",JSON.stringify(res.data.body))

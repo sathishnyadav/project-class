@@ -1,0 +1,16 @@
+.UserLocation form{
+    display: grid;
+    grid-template-columns: 200px 200px;
+    margin: 20px 100px;
+    border: 3px solid;
+    padding: 20px 50px;
+    border-radius: 10px;
+}
+.UserLocation input,label,select{
+    margin: 10px;
+    height: 25px;
+}
+.UserLocation {
+    display: flex;
+    justify-content: center;
+}
