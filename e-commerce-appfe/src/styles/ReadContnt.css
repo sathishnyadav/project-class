@@ -1,0 +1,33 @@
+.read_disp{
+    display: flex;
+}
+#amount{
+    font-size: 30px;
+}
+.read_disp strike{
+    color: grey;
+}
+.read_disp sup{
+    font-size: large;
+    font-weight: bold;
+}
+#cart{
+    transform: translate(80px);
+    padding: 4px 80px;
+    border-radius: 30px;
+}
+#cart:hover{
+    font-size: large;
+    color: white;
+    border: 2px solid black;
+
+}
+#icon{
+    position: absolute;
+    right: 10px;
+    font-size: 30px;
+}
+#icon:active{
+    fill: red;
+    background-color: red;
+}

@@ -58,6 +58,10 @@ function ProductView() {
     navigate(`/merchanthomepage/updateproduct/${id}`)
   }
 
+  let readData = (id) =>{
+    navigate(`/merchanthomepage/readData/${id}`)
+  }
+
   // let searchName = (name) =>{
   //   let name1 = JSON
   //   axios.get(`http://localhost:8080/products/find-by-name/${name}`)
@@ -90,13 +94,13 @@ function ProductView() {
                 </Dropdown.Menu>
               </Dropdown>
             </div>
-            <div className="productview">
+            <div  className="productview">
               <div className="image">
                 <span id='category'>{x.category}</span>
                 <img src={x.image_url} alt="" />
               </div>
               <div className="desc">
-                <h4 id='name'>{x.name} || {x.brand}</h4>
+                <h4 id='name' onClick={()=>{readData(x.id)}}>{x.name} || {x.brand}</h4>
                 <span id='cost'><sup><b>₹</b></sup>{x.cost}</span>
                 <br />
                 <span id='desc'>{x.description}</span>

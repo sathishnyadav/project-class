@@ -4,6 +4,7 @@ import ProductView from "./ProductView";
 import UpdateMerchant from "./UpdateMerchant";
 import AddProducts from "./AddProducts";
 import UpdateProducts from "./UpdateProducts";
+import ReadContent from "./ReadContent";
 
 const MechantHomePage = () => {
     return (
@@ -14,6 +15,7 @@ const MechantHomePage = () => {
             <Route path="/updatemerchant" element={<UpdateMerchant/>}/>
             <Route path="/addproduts" element={<AddProducts/>}/>
             <Route path="/updateproduct/:id" element={<UpdateProducts/>}/>
+            <Route path='readData/:id' element={<ReadContent/>}/>
            </Routes>
         </div>
       );

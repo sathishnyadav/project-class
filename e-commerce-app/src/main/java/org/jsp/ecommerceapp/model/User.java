@@ -42,4 +42,6 @@ public class User {
 			@JoinColumn(name = "product_id") })
 	@OneToMany
 	private List<Product> wishList;
+	@OneToMany(mappedBy = "user")
+	private List<UserOrder> orders;
 }

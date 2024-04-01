@@ -4,7 +4,7 @@ import UpdateUser from './UpdateUser'
 import UserProduct from './UserProduct'
 import UserNavbar from './UserNavbar'
 import UserLocation from './UserLocation'
-
+import ReadContent from './ReadContent'
 function UserHomePage() {
     return (
         <div className="userhompage">
@@ -13,6 +13,9 @@ function UserHomePage() {
             <Route path='/' element={<UserProduct/>}/>
             <Route path="/updateuser" element={<UpdateUser/>}/>
             <Route path='/addAdress' element={<UserLocation/>}/>
+            <Route path='/readData/:id' element={<ReadContent/>}/>
+            
+
         </Routes>
         </div>
     )
