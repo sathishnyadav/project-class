@@ -108,7 +108,9 @@ function ProductView() {
               <div className="icons">
                 <EditIcon  onClick={()=>{editData(x.id)}}/>
                 <DeleteForeverIcon onClick={()=>{removeData(x.name,x.id)}} />
+             
               </div>
+
             </div>
           </div>
 
